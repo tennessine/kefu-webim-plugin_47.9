@@ -54,16 +54,7 @@
 			var visitorInfo;
 			var parsed;
 			var prefix = (config.tenantId || '') + (config.emgroup || '');
-			// TODO remove me
-			utils.setStore(prefix + 'visitor', JSON.stringify({
-        trueName: '葛孔飞',
-        qq: '389443626',
-        phone: '13632613407',
-        companyName: '好牙医',
-        userNickname: 'Tennessine',
-        description: '洗牙多少钱? 矫正牙多少钱? 以前没洗过牙，洗牙不会造成牙龈萎缩吧?',
-        email: '389443626@qq.com'
-    	}));
+			
 			visitorInfo = utils.getStore(prefix + 'visitor');
 			utils.clearStore(prefix + 'visitor');
 			try {
@@ -94,37 +85,6 @@
 				// 以上均不匹配时，需要重新创建用户
 				config.user = {};
 			}
-
-			config.appKey = 'haoyayi#haoyayidoc'
-			config.to = 'zhaoyandong'
-
-			// 指定客服
-			config.agentName = '9527@51haoyayi.com'
-
-			config.user = {
-				// username: '195139',
-				// password: '123456'
-			}
-
-			// 聊天窗口加载成功回调
-	    config.onready = function() {
-        easemobim.sendExt({
-          ext:{
-            "imageName": "mallImage3.png",
-            //custom代表自定义消息，无需修改
-            "type": "custom",           
-            "msgtype": {
-              "track":{
-                "title":"我正在看：",
-                "price":"¥: 235.00",
-                "desc":"女装小香风气质蕾丝假两件短袖",
-                "img_url":"https://www.yourdomain.com/img/a.jpg",
-                "item_url":"https://www.yourdomain.com/item/a.html"
-              }
-            }
-          }
-        })
-	    }
 
 			chat = easemobim.chat(config);
 			initUI(initAfterUI);

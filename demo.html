@@ -1,70 +1,148 @@
 <!doctype html>
 <html>
+
 <head>
-	<meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,user-scalable=no">
-	<style>
-		body { background-color: #eee;color: #555; }
-		button, a { display: block;margin: 20px 0;background: #00CEB9;border: none;color: #fff;line-height: 40px;width: 200px;cursor: pointer;outline: none;text-align: center; }
-		button:hover, a:hover { box-shadow: 0 0 5px #33CEB9; }
-		button:active, a:active { background: #fff;color: #00CEB9; }
-		input { height: 40px;outline: none;width: 300px;text-align: center;font-size: 16px;color: #00CEB9; float: left;border: 1px solid #fff; }
-	</style>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,user-scalable=no">
+  <style>
+  body {
+    background-color: #eee;
+    color: #555;
+  }
+  
+  button,
+  a {
+    display: block;
+    margin: 20px 0;
+    background: #00CEB9;
+    border: none;
+    color: #fff;
+    line-height: 40px;
+    width: 200px;
+    cursor: pointer;
+    outline: none;
+    text-align: center;
+  }
+  
+  button:hover,
+  a:hover {
+    box-shadow: 0 0 5px #33CEB9;
+  }
+  
+  button:active,
+  a:active {
+    background: #fff;
+    color: #00CEB9;
+  }
+  
+  input {
+    height: 40px;
+    outline: none;
+    width: 300px;
+    text-align: center;
+    font-size: 16px;
+    color: #00CEB9;
+    float: left;
+    border: 1px solid #fff;
+  }
+  </style>
 </head>
 
 <body>
-
-	<h1>Demo</h1>
-	<a target='_blank' href='http://docs.easemob.com/cs/300visitoraccess/20webplugin'>集成文档</a>
-	<br><br><br><br><br><br><br>
-
-	<a href='javascript:;' onclick='easemobim.bind({
-		tenantId: 10954,
-		dialogWidth: "500px"
-	})'>窗口加宽示例</a>
-	<a href='javascript:;' onclick='easemobim.bind({
-		tenantId: 10954,
+  <h1>Demo</h1>
+  <a target='_blank' href='http://docs.easemob.com/cs/300visitoraccess/20webplugin'>集成文档</a>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <a href='javascript:;' onclick='easemobim.bind({
+    tenantId: 10954,
+    dialogWidth: "500px"
+  })'>窗口加宽示例</a>
+  <a href='javascript:;' onclick='easemobim.bind({
+    tenantId: 10954,
         emgroup: "技能组1"
-	})'>绑定技能组示例</a>
+  })'>绑定技能组示例</a>
+  <br>
+  <br>
+  <br>
+  <h1>测试</h1>
+  <div>
+    <input id='testvalue' type='text' placeholder='请输入您的tenantId，点击测试按钮' value="43659" />
+  </div>
+  <a id='test'>测试</a>
+  <br>
+  <br>
+  <br>
+  <script>
+  var v = document.getElementById('testvalue');
+  v.value = localStorage.getItem('easemobtest') || '';
+  document.getElementById('test').onclick = function() {
+    if (/\d+/.test(v.value)) {
+      localStorage.setItem('easemobtest', v.value);
+      easemobim.bind({
+        tenantId: v.value.replace(/\s/g, '')
+      })
+    }
+  };
+  </script>
+  <script>
+  window.easemobim = window.easemobim || {};
 
+  easemobim.config = {
+    // domain: '//sandbox5.kefu.easemob.com',
+    // domain: '//kefu.easemob.com',
+    // 访客自动上报
+    // eventCollector: true,
+    satisfaction: true,
+    // hide: false,
+    // minimum: false,
+    tenantId: 43659,
+    appKey: 'haoyayi#haoyayidoc',
+    to: 'zhaoyandong',
+    // 指定客服
+    agentName: '9527@51haoyayi.com',
+    user: {
+      username: '195139',
+      password: '123456'
+    },
 
-
-	
-	<br><br><br><h1>测试</h1>
-	<div><input id='testvalue' type='text' placeholder='请输入您的tenantId，点击测试按钮'/></div>
-	<a id='test'>测试</a>
-	<br><br><br>
-	<script>
-		var v = document.getElementById('testvalue');
-		v.value = localStorage.getItem('easemobtest') || '';
-		document.getElementById('test').onclick = function () {
-			if (/\d+/.test(v.value)) {
-				localStorage.setItem('easemobtest', v.value);
-				easemobim.bind({ tenantId: v.value.replace(/\s/g, '') })
-			}
-		};
-	</script>
-
-
-
-<script>
-	window.easemobim = window.easemobim || {};
-
-easemobim.config = {
-	// domain: '//sandbox5.kefu.easemob.com',
-	// domain: '//kefu.easemob.com',
-	// 访客自动上报
-	// eventCollector: true,
-	satisfaction: true,
-	// hide: false,
-	// minimum: false,
-	tenantId: 11885,
-	unused: ''
-};
-</script>
-
-<script src='easemob.js'></script>
+    unused: '',
+    // 给客服人员查看
+    visitor: {
+      trueName: '葛孔飞',
+      qq: '389443626',
+      phone: '13632613407',
+      companyName: '好牙医',
+      userNickname: 'Tennessine',
+      description: '洗牙多少钱? 矫正牙多少钱? 以前没洗过牙，洗牙不会造成牙龈萎缩吧?',
+      email: '389443626@qq.com'
+    },
+    // 移动端点击联系客服按钮自动发送订单消息demo
+    // 给客服人员查看
+    extMsg: {
+      "imageName": "mallImage3.png",
+      //custom代表自定义消息，无需修改
+      "type": "custom",
+      "msgtype": {
+        "order": {
+          "img_url": "h\n.pn",
+          "title": "订单消息",
+          "desc": "端午节粽子四",
+          "order_title": "订单号：123456789012345678901234567890",
+          "price": "",
+          "item_url": "https://www.baidu.com?s=order_sn/123123"
+        }
+      }
+    }
+  };
+  </script>
+  <script src='easemob.js'></script>
 </body>
+
 </html>
